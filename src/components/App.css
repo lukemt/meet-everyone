@@ -1,0 +1,34 @@
+/* a box around everything */
+body * {
+  margin: 5px;
+  padding: 5px;
+}
+
+.floor {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.green {
+  background-color: lightgreen;
+}
+.red {
+  background-color: lightcoral;
+}
+.bigbutton {
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #3c3c3c;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.border {
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+}
