@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { generateRooms, move, Room } from "../logic/rooms";
+import { generateRooms, move } from "../logic/rooms";
 import RoomComponent from "./RoomComponent";
 import { initStatistic, logStatistic } from "../logic/statistic";
 import { StatisticComponent } from "./StatisticComponent";
