@@ -62,6 +62,9 @@ function App() {
       </div>
       <h2>Who met whom?</h2>
       <StatisticComponent statistic={statistic} />
+      <a href="https://github.com/lukemt/meet-everyone">
+        source code on github
+      </a>
     </>
   );
 }
