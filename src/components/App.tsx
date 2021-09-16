@@ -23,18 +23,21 @@ let initialStatistic = initStatistic(persons);
 initialStatistic = logStatistic(initialStatistic, initalRooms);
 
 function App() {
-  const [roomsState, setRoom] = React.useState(initalRooms);
-  const [roundState, setRound] = React.useState(1);
-  const [statisticState, setStatistic] = React.useState(initialStatistic);
+  const [rooms, setRooms] = React.useState(initalRooms);
+  const [round, setRound] = React.useState(1);
+  const [statistic, setStatistic] = React.useState(initialStatistic);
 
   const handleClick = () => {
-    console.log("hello!!!", roundState);
-    console.table(roomsState);
-    const newRooms = move(roomsState, roundState);
-    const newStatistic = logStatistic(statisticState, newRooms);
-    setRoom(newRooms);
+    console.log("hello!!!", round);
+    console.table(rooms);
+    const newRooms = move(rooms, round);
+    const newStatistic = logStatistic(
+      statistic,
+      newRooms.slice(0, round % 2 === 0 ? undefined : -1)
+    );
+    setRooms(newRooms);
     setStatistic(newStatistic);
-    setRound(roundState + 1);
+    setRound(round + 1);
   };
 
   return (
@@ -43,20 +46,22 @@ function App() {
         <div style={{ flexGrow: 1 }}>
           <h2>Rooms</h2>
           <div className="floor">
-            {roomsState.map((room, index) => (
-              <RoomComponent room={room} key={index} />
-            ))}
+            {rooms
+              .slice(0, round % 2 === 1 ? undefined : -1)
+              .map((room, index) => (
+                <RoomComponent room={room} key={index} />
+              ))}
           </div>
         </div>
         <div>
-          <h2>Round {roundState}</h2>
+          <h2>Round {round}</h2>
           <button className="bigbutton" onClick={handleClick}>
             Next Round
           </button>
         </div>
       </div>
-      <h2>Who met who?</h2>
-      <StatisticComponent statistic={statisticState} />
+      <h2>Who met whom?</h2>
+      <StatisticComponent statistic={statistic} />
     </>
   );
 }
